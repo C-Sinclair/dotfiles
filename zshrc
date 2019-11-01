@@ -36,7 +36,6 @@ export EDITOR=$VISUAL
 alias v='nvim'
 
 alias vim="nvim"
-alias top="vtop --theme=wizard"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
