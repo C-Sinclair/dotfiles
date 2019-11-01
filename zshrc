@@ -1,7 +1,7 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:/home/conor/Go/bin/
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$HOME/Go/bin/
 export GOPATH=$HOME/Go
 
-export ZSH="/home/conor/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 source ~/.zplug/init.zsh
 
