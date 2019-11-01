@@ -15,4 +15,22 @@ sh install.sh
 
 # ZPlug
 brew install zplug
+
+# ZshAutocomplete
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# ZshSyntaxHighlight
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# ZshSpaceshipTheme
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+# ZshAutoEnv
+git clone https://github.com/Tarrasch/zsh-autoenv "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autoenv"
+
+# VimPlug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 ```

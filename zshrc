@@ -3,7 +3,24 @@ export GOPATH=$HOME/Go
 
 export ZSH=$HOME/.oh-my-zsh
 
-source ~/.zplug/init.zsh
+case `uname` in 
+	Darwin) 
+		MAC=true
+		;;
+	Linux)
+		;;
+	FreeBSD)
+		;;
+esac
+
+if [ "$MAC" = true ]
+then
+	export ZPLUG_HOME=/usr/local/opt/zplug	
+else
+	export ZPLUG_HOME=~/.zplug
+fi
+
+source $ZPLUG_HOME/init.zsh
 
 alias li='ssh root@lithium.wilxite.uk'
 alias ni='ssh root@nitrogen.wilxite.uk'
@@ -44,7 +61,6 @@ SPACESHIP_PROMPT_ORDER=(
 	)
 
 autoload -U promptinit; promptinit
-prompt spaceship
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_GIT_STATUS_STASHED=''
@@ -56,6 +72,8 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
+source $ZSH_CUSTOM/plugins/zsh-autoenv/autoenv.zsh
+
 plugins=(
 	git
 	zsh-syntax-highlighting
@@ -63,7 +81,4 @@ plugins=(
 	)
 
 source $ZSH/oh-my-zsh.sh
-
-source ~/.zsh/almostontop/almostontop.plugin.zsh 
-source ~/.dotfiles/lib/zsh-autoenv/autoenv.zsh
 
