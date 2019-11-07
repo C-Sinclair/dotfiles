@@ -34,3 +34,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ```
+
+### Setting up SymLinks
+```
+
+# VSCode
+ln -s ~/.dotfiles/vscode/settings.json  /Users/tercunface/Library/ApplicationSupport/Code/User/settings.json
+```
+
