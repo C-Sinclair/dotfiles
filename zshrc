@@ -71,7 +71,7 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-source $ZSH_CUSTOM/plugins/zsh-autoenv/autoenv.zsh
+source $ZPLUG_HOME/plugins/zsh-autoenv/autoenv.zsh
 
 plugins=(
 	git

@@ -1,0 +1,24 @@
+{
+    "workbench.sideBar.location": "left",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "jshint.lintHTML": true,
+    "jshint.packageManager": "yarn",
+    "jshint.options": {
+        "esversion": 9,
+        "lastsemic": true
+    },
+    "jshint.enable": false,
+    "terminal.integrated.rendererType": "dom",
+    "workbench.colorTheme": "Night Owl",
+    "workbench.panel.defaultLocation": "right",
+    "workbench.activityBar.visible": false,
+    "workbench.statusBar.visible": false,
+    "editor.minimap.enabled": false,
+    "window.menuBarVisibility": "default",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace"
+}
