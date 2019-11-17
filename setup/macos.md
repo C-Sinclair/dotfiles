@@ -42,3 +42,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ln -s ~/.dotfiles/vscode/settings.json  /Users/tercunface/Library/ApplicationSupport/Code/User/settings.json
 ```
 
+# NodeJS
+brew update && brew install node
+
+# Yarn
+brew install yarn
+
+# Detox 
+brew tap wix/brew
+brew install applesimutils
+yarn global add detox-cli
+
+

@@ -13,12 +13,14 @@
     "jshint.enable": false,
     "terminal.integrated.rendererType": "dom",
     "workbench.colorTheme": "Night Owl",
-    "workbench.panel.defaultLocation": "right",
     "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": false,
     "editor.minimap.enabled": false,
     "window.menuBarVisibility": "default",
     "workbench.iconTheme": "material-icon-theme",
     "editor.fontLigatures": true,
-    "editor.fontFamily": "'Cascadia Code', Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "\"Verdana\"",
+    "window.titleBarStyle": "native",
+    "editor.fontSize": 14,
+    "terminal.explorerKind": "external"
 }
