@@ -37,6 +37,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 ### Setting up SymLinks
 ```
+# Zsh
+ln -s ~/.dotfiles/zshrc ~/.zshrc
+
+# Nvim
+ln -s ~/.dotfiles/nvim ~/nvim
 
 # VSCode
 ln -s ~/.dotfiles/vscode/settings.json  /Users/tercunface/Library/ApplicationSupport/Code/User/settings.json
