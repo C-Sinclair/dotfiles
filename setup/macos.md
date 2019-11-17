@@ -27,7 +27,7 @@ git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/theme
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 # ZshAutoEnv
-git clone https://github.com/Tarrasch/zsh-autoenv "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autoenv"
+git clone https://github.com/Tarrasch/zsh-autoenv "~/.zplug/plugins/zsh-autoenv"
 
 # VimPlug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

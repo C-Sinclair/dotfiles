@@ -13,12 +13,7 @@ case `uname` in
 		;;
 esac
 
-if [ "$MAC" = true ]
-then
-	export ZPLUG_HOME=/usr/local/opt/zplug	
-else
-	export ZPLUG_HOME=~/.zplug
-fi
+export ZPLUG_HOME=~/.zplug
 
 source $ZPLUG_HOME/init.zsh
 
@@ -71,7 +66,7 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-source $ZPLUG_HOME/plugins/zsh-autoenv/autoenv.zsh
+source ~/.zplug/plugins/zsh-autoenv/autoenv.zsh
 
 plugins=(
 	git
