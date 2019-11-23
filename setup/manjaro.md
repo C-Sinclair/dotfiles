@@ -51,10 +51,31 @@ ln -s ~/.dotfiles/vscode/settings.json ~/.config/Code/User/settings.json
 
 Applications:
 ```
+# Git
+sudo pacman -S git
+
+# Yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# NodeJS 
+yay -S nvm
+nvm install v13.1.0
+yay -S yarn
+
 # VSCode
 sudo pacman -S code
 
 # Gitkraken
 sudo snap install --devmode gitkraken
 
+# OpenVPN
+pacman -S networkmanager-openvpn
+systemctl restart networkmanager
+
+# Flash Player
+sudo pacman -Syu flashplugin 
+
+# Gimp 
 ```

@@ -76,4 +76,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+source /usr/share/nvm/init-nvm.sh
+
 alias composer="php /usr/local/bin/composer.phar"
+
