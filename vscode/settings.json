@@ -23,5 +23,6 @@
     "window.titleBarStyle": "native",
     "editor.fontSize": 14,
     "terminal.explorerKind": "external",
-    "terminal.integrated.fontFamily": "\"Monospace\""
+    "terminal.integrated.fontFamily": "\"Monaco\"",
+    "explorer.confirmDelete": false
 }
