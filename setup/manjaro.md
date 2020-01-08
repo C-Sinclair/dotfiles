@@ -77,5 +77,13 @@ systemctl restart networkmanager
 # Flash Player
 sudo pacman -Syu flashplugin 
 
+# Android Tool
+sudo pacman -S android-tools
+yay -S android-studio
+
+# JVM
+sudo pacman -S jdk8-openjdk jre8-openjdk java-openjfx icedtea-web 
+
+
 # Gimp 
 ```

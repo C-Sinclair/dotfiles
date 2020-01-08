@@ -1,4 +1,6 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$HOME/Go/bin/:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
+source ~/.vars
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$HOME/Go/bin/:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin/.flutter/flutter/bin
 export GOPATH=$HOME/Go
 
 export ZSH=$HOME/.oh-my-zsh
@@ -79,4 +81,6 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/nvm/init-nvm.sh
 
 alias composer="php /usr/local/bin/composer.phar"
+
+eval "$(direnv hook zsh)"
 
