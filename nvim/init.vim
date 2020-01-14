@@ -16,13 +16,16 @@ source ~/.config/nvim/coc.vim
 	set termguicolors
 	set background=dark
 	set encoding=UTF-8
-	set t_CO=256
 	set linespace=4
 	set tabstop=4
 	set shiftwidth=4
 	set number relativenumber
 	set nocursorline
 	set noruler
+	
+	if !has('gui_running')
+  		set t_Co=256
+	endif
 
 " Splits
 " ======
@@ -123,10 +126,27 @@ source ~/.config/nvim/coc.vim
 	let NERDTreeDirArrows = 0
 	let NERDTreeAutoDeleteBuffer = 1
 
+	" Close Vim if NERDTree is only window left
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " " CtrlP
 " " =====
 " 	let g:ctrlp_custom_ignore = 'node_modules\|git'
 " 	let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20'
+
+" LightLine
+" =========
+	" Hide old line
+	set noshowmode 
+	
+	let g:lightline = {
+	\ 	'colorscheme': 'one',
+	\   'enable': {
+	\     'tabline': 0
+	\   }
+	\
+	\
+	\ }
 
 " DevIcons
 " ========

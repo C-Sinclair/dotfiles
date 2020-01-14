@@ -18,8 +18,11 @@
 		Plug 'equalsraf/neovim-qt'
 		Plug 'flazz/vim-colorschemes'
 
+	" INSERT Status line
+		Plug 'itchyny/lightline.vim'
+
 	" " Navigation
-	" 	Plug 'ctrlpvim/ctrlp.vim'
+	" Plug 'ctrlpvim/ctrlp.vim'
 
 	" Git
 		Plug 'tpope/vim-fugitive'
@@ -84,6 +87,9 @@
 
 	" FileExplorer
 		Plug 'Shougo/denite.nvim'
+
+	" Start screen
+		Plug 'mhinz/vim-startify'
 
 	" Icons
 		Plug 'mhartington/defx-devicons'
