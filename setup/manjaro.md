@@ -1,4 +1,4 @@
-Manjaro setup
+
 =============
 
 Install the following:
@@ -87,3 +87,6 @@ sudo pacman -S jdk8-openjdk jre8-openjdk java-openjfx icedtea-web
 
 # Gimp 
 ```
+
+### Yakuake
+System Settings -> Startup and Shutdown -> Autostart screen. Click Add Script…
