@@ -20,3 +20,6 @@ run "/yakuake/sessions org.kde.yakuake.addSession"
 run "/yakuake/tabs org.kde.yakuake.setTabTitle 2 'Env'"
 run "/yakuake/sessions org.kde.yakuake.splitSessionLeftRight 2"
 
+# Misc shell
+run "/yakuake/tabs org.kde.yakuake.setTabTitle 3 'Misc'"
+run "/yakuake/sessions runCommandInTerminal 3 'emacs --daemon'"

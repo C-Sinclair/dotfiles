@@ -1,6 +1,6 @@
 source ~/.vars
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$HOME/Go/bin/:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin/.flutter/flutter/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/go/bin:$HOME/Go/bin/:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/bin/.flutter/flutter/bin:$HOME/.nimble/bin
 export GOPATH=$HOME/Go
 
 export ZSH=$HOME/.oh-my-zsh
