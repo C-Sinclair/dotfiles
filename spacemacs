@@ -46,11 +46,16 @@ values."
      git
      markdown
      org
+     emoji
      (shell :variables
              shell-default-height 30
-             shell-default-position 'bottom)
+             shell-default-position 'right)
      syntax-checking
      react
+     ranger
+     (wakatime :variables
+               wakatime-api-key "19fd2429-844f-46be-8dd7-ea3dcef17c07"
+               wakatime-cli-path "/usr/bin/wakatime")
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
