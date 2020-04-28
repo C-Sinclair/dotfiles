@@ -22,7 +22,7 @@
 		Plug 'itchyny/lightline.vim'
 
 	" " Navigation
-	" Plug 'ctrlpvim/ctrlp.vim'
+		Plug 'ctrlpvim/ctrlp.vim'
 
 	" Git
 		Plug 'tpope/vim-fugitive'
@@ -53,6 +53,7 @@
 		Plug 'pangloss/vim-javascript'
 		Plug 'mxw/vim-jsx'
 		Plug 'Chiel92/vim-autoformat'
+		Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 	
 	" Clojure
 		Plug 'tpope/vim-fireplace', 

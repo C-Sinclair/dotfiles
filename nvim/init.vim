@@ -6,8 +6,8 @@ source ~/.config/nvim/coc.vim
 
 " Leader
 " ======
-	let mapleader = ","
-	let g:mapleader = ','
+	let mapleader = " "
+	let g:mapleader = ' '
 
 " Visual
 " ======
@@ -44,14 +44,11 @@ source ~/.config/nvim/coc.vim
 	set nohlsearch
 	set incsearch
 
-	" vmap ?? <esc>:silent exec firefox --search
-
 " Navigation
 " ==========
 	nmap <Leader>zsh :tabedit ~/.zshrc<cr>  
 	nmap <Leader>vim :tabedit ~/.config/nvim/init.vim<cr>  
 	nmap <Leader>cl :tabedit ~/.lein/profiles.clj<cr>  
-	nmap <Leader>hy :tabedit ~/.hyper.js<cr>  
 
 " Shortcuts
 " =========
@@ -61,10 +58,10 @@ source ~/.config/nvim/coc.vim
 	noremap J 5j
 	noremap K 5k
 	tnoremap <Leader><esc> <C-\><C-n>
-	nmap ; :Denite buffer -split=floating -winrow=1<CR>
-	nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
-	nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-	nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+	" nmap ; :Denite buffer -split=floating -winrow=1<CR>
+	" nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
+	" nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+	" nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 
 	let g:user_emmet_leader_key=','
 
@@ -72,8 +69,8 @@ source ~/.config/nvim/coc.vim
 " =========
 	set clipboard=unnamed
 
-	map <C-c> "*y
-	map <C-v> "*p
+	" map <C-c> "*y
+	" map <C-v> "*p
 	
 	" Copy to the end of the line
 	map Y y$
@@ -125,14 +122,21 @@ source ~/.config/nvim/coc.vim
 	let NERDTreeMinimalUI = 1
 	let NERDTreeDirArrows = 0
 	let NERDTreeAutoDeleteBuffer = 1
+	let g:NERDTreeIgnore = ["^node_modules$"]
 
 	" Close Vim if NERDTree is only window left
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " " CtrlP
 " " =====
-" 	let g:ctrlp_custom_ignore = 'node_modules\|git'
-" 	let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20'
+	let g:ctrlp_custom_ignore = 'node_modules\|git'
+	let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20'
+
+" " Prettier
+" " ========
+	" Command for CoC
+	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 
 " LightLine
 " =========
@@ -186,17 +190,14 @@ source ~/.config/nvim/coc.vim
 
 " Misc
 " ====
-	noremap <Up> <NOP>
-	noremap <Down> <NOP>
-	noremap <Left> <NOP>
-	noremap <Right> <NOP>
-	" Disable Scroll
-	noremap <Up> <NOP>
-	noremap <Down> <NOP>
-	noremap <Left> <NOP>
-	noremap <Right> <NOP>
-	" Disable Scroll
 	set cmdheight=1
 	set mouse=
 	set shortmess=aT
+
+" Arrow Keys
+" ==========
+	nnoremap <Left> h
+	nnoremap <Right> l
+	nnoremap <Up> k
+	nnoremap <Down> j
 	
