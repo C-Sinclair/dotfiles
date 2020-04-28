@@ -19,7 +19,7 @@ set autoread
 set clipboard=unnamed
 
 for file in split(glob('~/.config/nvim/settings/*.vim'))
-	exe 'source' file 	
+  exe 'source' file
 endfor
 
 source ~/.config/nvim/shortcuts.vim

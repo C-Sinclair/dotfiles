@@ -16,7 +16,6 @@ let g:NERDTreeIgnore = ['^node_modules$', '^\.DS_Store$', '^tags$', '\.git$[[dir
 let NERDTreeDirArrows = 0
 
 noremap <Leader>a :NERDTreeToggle<cr>
-map <C-t> :NERDTreeTabsToggle<cr>
 let NERDTreeMinimalUI = 1
 let NERDTreeAutoDeleteBuffer = 1
 

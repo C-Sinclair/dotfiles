@@ -15,7 +15,7 @@ set termguicolors
 set background=dark
 
 " Vim airline theme
-let g:airline_theme='space'
+let g:airline_theme='luna'
 
 " Change vertical split character to be a space (essentially hide it)
 set fillchars+=vert:.
