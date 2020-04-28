@@ -1,99 +1,88 @@
-" Plugins
-" ======
-	call plug#begin(stdpath('data') . '/plugged')
+" ============================================================================ "
+" ===                               PLUGINS                                === "
+" ============================================================================ "
 
-	" SuperPowers
-		Plug 'tpope/vim-surround'
-		Plug 'tpope/vim-commentary'
-		Plug 'mbbill/undotree'
-		" Plug 'ntpeters/vim-better-whitespace'
-		Plug 'rstacruz/vim-closer'
-		Plug 'easymotion/vim-easymotion'
-		Plug 'w0rp/ale'
+" check whether vim-plug is installed and install it if necessary
+let plugpath = expand('<sfile>:p:h'). '/autoload/plug.vim'
+if !filereadable(plugpath)
+    if executable('curl')
+        let plugurl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        call system('curl -fLo ' . shellescape(plugpath) . ' --create-dirs ' . plugurl)
+        if v:shell_error
+            echom "Error downloading vim-plug. Please install it manually.\n"
+            exit
+        endif
+    else
+        echom "vim-plug not installed. Please install it manually or install curl.\n"
+        exit
+    endif
+endif
 
-	" Intellisense Engine
-		Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+call plug#begin('~/.config/nvim/plugged')
 
-	" Visuals
-		Plug 'equalsraf/neovim-qt'
-		Plug 'flazz/vim-colorschemes'
+" === Editing Plugins === "
+" Trailing whitespace highlighting & automatic fixing
+Plug 'ntpeters/vim-better-whitespace'
 
-	" INSERT Status line
-		Plug 'itchyny/lightline.vim'
+" auto-close plugin
+Plug 'rstacruz/vim-closer'
 
-	" " Navigation
-		Plug 'ctrlpvim/ctrlp.vim'
+" Improved motion in Vim
+Plug 'easymotion/vim-easymotion'
 
-	" Git
-		Plug 'tpope/vim-fugitive'
-		Plug 'airblade/vim-gitgutter'
-		Plug 'Xuyuanp/nerdtree-git-plugin'
+" Intellisense Engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-	" NerdTree
-		Plug 'scrooloose/nerdtree'
-		Plug 'jistr/vim-nerdtree-tabs'
-		Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Denite - Fuzzy finding, buffer management
+Plug 'Shougo/denite.nvim'
 
-	" Tmux
-		Plug 'christoomey/vim-tmux-navigator'
+" Snippet support
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
-	" Generic
-		Plug 'sheerun/vim-polyglot'
-		Plug 'Chiel92/vim-autoformat'
-		Plug 'gko/vim-coloresque'
-		Plug 'jiangmiao/auto-pairs'
-		Plug 'neomake/neomake'
-		Plug 'luochen1990/rainbow'
+" Print function signatures in echo area
+Plug 'Shougo/echodoc.vim'
 
-	" Javascript
-		Plug 'othree/yajs.vim'
-		Plug 'moll/vim-node'
-		Plug 'othree/vim-better-javascript-completion'
-		Plug '1995eaton/vim-better-javascript-completion'
-		Plug 'pangloss/vim-javascript'
-		Plug 'mxw/vim-jsx'
-		Plug 'Chiel92/vim-autoformat'
-		Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-	
-	" Clojure
-		Plug 'tpope/vim-fireplace', 
-		Plug 'guns/vim-clojure-static'
-		Plug 'tpope/vim-salve'
+" === Git Plugins === "
+" Enable git changes to be shown in sign column
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
 
-	" Go
-		Plug 'stamblerre/gocode'
-		Plug 'deoplete-plugins/deoplete-go'
+" === Javascript Plugins === "
+" Typescript syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim'
 
-	" Swift
-		Plug 'keith/swift.vim'
+" ReactJS JSX syntax highlighting
+Plug 'mxw/vim-jsx'
 
-	" Html
-		Plug 'mattn/emmet-vim'
+" Generate JSDoc commands based on function signature
+Plug 'heavenshell/vim-jsdoc'
 
-	" Files
-		Plug 'tpope/vim-vinegar'
+" === Syntax Highlighting === "
 
-	" Autocomplete
-		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-		Plug 'Shougo/neosnippet.vim'
-		Plug 'Shougo/neosnippet-snippets'
+" Syntax highlighting for nginx
+Plug 'chr4/nginx.vim'
 
-	if has('nvim')
-	  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-	else
-	  Plug 'Shougo/defx.nvim'
-	  Plug 'roxma/nvim-yarp'
-	  Plug 'roxma/vim-hug-neovim-rpc'
-	endif
+" Syntax highlighting for javascript libraries
+Plug 'othree/javascript-libraries-syntax.vim'
 
-	" FileExplorer
-		Plug 'Shougo/denite.nvim'
+" Improved syntax highlighting and indentation
+Plug 'othree/yajs.vim'
 
-	" Start screen
-		Plug 'mhinz/vim-startify'
+" === UI === "
+" File explorer
+Plug 'scrooloose/nerdtree'
 
-	" Icons
-		Plug 'mhartington/defx-devicons'
-		Plug 'ryanoasis/vim-devicons'
+" Colorscheme
+Plug 'mhartington/oceanic-next'
 
-	call plug#end()
+" Customized vim status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Icons
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Initialize plugin system
+call plug#end()

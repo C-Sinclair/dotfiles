@@ -1,8 +1,8 @@
-" Vim airline 
-" ===========
 
-try 
+" Wrap in try/catch to avoid errors on initial install before plugin is available
+try
 
+" === Vim airline ==== "
 " Enable extensions
 let g:airline_extensions = ['branch', 'hunks', 'coc']
 
@@ -18,19 +18,13 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Custom setup that removes filetype/whitespace from default vim airline bar
 let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
 
-let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-
-let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
-
-" Configure error/warning section to use coc.nvim
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
-" Hide the Nerdtree status line to avoid clutter
-let g:NERDTreeStatusline = ''
-
-" Disable vim-airline in preview mode
-let g:airline_exclude_preview = 1
+" Customize vim airline per filetype
+" 'nerdtree'  - Hide nerdtree status line
+" 'list'      - Only show file type plus current line number out of total
+let g:airline_filetype_overrides = {
+  \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', ''), '' ],
+  \ 'list': [ '%y', '%l/%L'],
+  \ }
 
 " Enable powerline fonts
 let g:airline_powerline_fonts = 1

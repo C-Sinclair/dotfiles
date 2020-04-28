@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function run {
-cmd="qdbus org.kde.yakuake $1"
-eval $cmd &> /dev/null
-sleep 0.5
+	cmd="qdbus org.kde.yakuake $1"
+	eval $cmd &> /dev/null
+	sleep 0.5
 }
 
 # Home tab
@@ -18,8 +18,9 @@ run "/yakuake/sessions runCommandInTerminal 1 'htop'"
 # Env tab (for projects)
 run "/yakuake/sessions org.kde.yakuake.addSession"
 run "/yakuake/tabs org.kde.yakuake.setTabTitle 2 'Env'"
+run "/yakuake/sessions runCommandInTerminal 2 'cd ~/Env'"
 run "/yakuake/sessions org.kde.yakuake.splitSessionLeftRight 2"
+run "/yakuake/sessions runCommandInTerminal http-server ~/Env/dashboard"
 
 # Misc shell
 run "/yakuake/tabs org.kde.yakuake.setTabTitle 3 'Misc'"
-run "/yakuake/sessions runCommandInTerminal 3 'emacs --daemon'"

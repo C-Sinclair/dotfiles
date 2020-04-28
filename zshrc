@@ -35,7 +35,8 @@ alias v='nvim'
 alias vim="nvim"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
+ZSH_THEME="lambda-gitster"
 
 SPACESHIP_PROMPT_ORDER=(
 	dir
@@ -84,3 +85,15 @@ alias composer="php /usr/local/bin/composer.phar"
 
 eval "$(direnv hook zsh)"
 
+function clj() {
+    if [[ -z $@ ]]
+    then
+        command clojure -A:repl
+    else
+        command clj $@
+    fi
+}
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

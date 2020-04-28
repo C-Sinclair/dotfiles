@@ -1,203 +1,68 @@
 scriptencoding utf-8
 
 source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/denite.vim
-source ~/.config/nvim/coc.vim
 
-" Leader
-" ======
-	let mapleader = " "
-	let g:mapleader = ' '
+let mapleader = " "
+let g:mapleader = ' '
 
-" Visual
-" ======
-	colorscheme OceanicNext " gruvbox
+set encoding=UTF-8
 
-	set termguicolors
-	set background=dark
-	set encoding=UTF-8
-	set linespace=4
-	set tabstop=4
-	set shiftwidth=4
-	set number relativenumber
-	set nocursorline
-	set noruler
-	
-	if !has('gui_running')
-  		set t_Co=256
-	endif
+" Misc Search
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
 
-" Splits
-" ======
-	set splitbelow splitright
+" Reread file if changed externally
+set autoread
 
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+set clipboard=unnamed
 
-	map <Leader><Tab> :vsp<cr>
-	map <Leader><Esc> :close<cr>
+for file in split(glob('~/.config/nvim/settings/*.vim'))
+	exe 'source' file 	
+endfor
 
-" Search
-" ======
-	set nohlsearch
-	set incsearch
-
-" Navigation
-" ==========
-	nmap <Leader>zsh :tabedit ~/.zshrc<cr>  
-	nmap <Leader>vim :tabedit ~/.config/nvim/init.vim<cr>  
-	nmap <Leader>cl :tabedit ~/.lein/profiles.clj<cr>  
-
-" Shortcuts
-" =========
-	inoremap <C-d> <esc>ddi
-	noremap H ^
-	noremap L g_
-	noremap J 5j
-	noremap K 5k
-	tnoremap <Leader><esc> <C-\><C-n>
-	" nmap ; :Denite buffer -split=floating -winrow=1<CR>
-	" nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
-	" nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-	" nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-
-	let g:user_emmet_leader_key=','
-
-" CopyPaste
-" =========
-	set clipboard=unnamed
-
-	" map <C-c> "*y
-	" map <C-v> "*p
-	
-	" Copy to the end of the line
-	map Y y$
-	set t_BE=
-		
-" Undo
-" ====
-	nnoremap <leader>u :UndotreeToggle<cr>
+source ~/.config/nvim/shortcuts.vim
 
 " Files
 " =====
-	set noswapfile
-	set undofile
-	set undodir = "$HOME/.undo"
+set noswapfile
+set undofile
+set undodir = "$HOME/.undo"
 
 " Folding
 " =======
-	set foldmethod=indent
-	set foldlevel=20
-	set foldlevelstart=20
+set foldmethod=indent
+set foldlevel=20
+set foldlevelstart=20
 
 " ExtraVimrc
 " ==========
-	set exrc
-	set secure
+set exrc
+set secure
 
 " AutoCommands
 " ============
-	augroup autosourcing
-		autocmd!
-		autocmd BufWritePost ~/.config/nvim/init.vim source %
-	augroup END
+augroup autosourcing
+	autocmd!
+	autocmd BufWritePost ~/.config/nvim/init.vim source %
+augroup END
 
-	" Remember line in file for future return
-	autocmd BufReadPost *
-		\ if line("'\"") > 0 && line("\"") <= line("$") |
-		\	exe "normal! g'\"" |
-		\ endif
-	autocmd BufRead * normal zz
+" Remember line in file for future return
+autocmd BufReadPost *
+	\ if line("'\"") > 0 && line("\"") <= line("$") |
+	\	exe "normal! g'\"" |
+	\ endif
+autocmd BufRead * normal zz
 
-	autocmd! BufReadPost,BufWritePost * Neomake
-
-	autocmd! BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
-" NerdTree
-" ========
-	noremap <Leader>a :NERDTreeToggle<cr>
-	map <C-t> :NERDTreeTabsToggle<cr>
-	let NERDTreeMinimalUI = 1
-	let NERDTreeDirArrows = 0
-	let NERDTreeAutoDeleteBuffer = 1
-	let g:NERDTreeIgnore = ["^node_modules$"]
-
-	" Close Vim if NERDTree is only window left
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" " CtrlP
-" " =====
-	let g:ctrlp_custom_ignore = 'node_modules\|git'
-	let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20'
-
-" " Prettier
-" " ========
-	" Command for CoC
-	command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-
-" LightLine
-" =========
-	" Hide old line
-	set noshowmode 
-	
-	let g:lightline = {
-	\ 	'colorscheme': 'one',
-	\   'enable': {
-	\     'tabline': 0
-	\   }
-	\
-	\
-	\ }
+autocmd! BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " DevIcons
 " ========
-	let g:airline_powerline_fonts = 1
-	let g:webdevicons_enable_nerdtree = 1
-	let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:airline_powerline_fonts = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
 
-" NoOps
-" =====
-	nmap <ScrollWheelUp> <nop>
-	nmap <S-ScrollWheelUp> <nop>
-	nmap <C-ScrollWheelUp> <nop>
-	nmap <ScrollWheelDown> <nop>
-	nmap <S-ScrollWheelDown> <nop>
-	nmap <C-ScrollWheelDown> <nop>
-	nmap <ScrollWheelLeft> <nop>
-	nmap <S-ScrollWheelLeft> <nop>
-	nmap <C-ScrollWheelLeft> <nop>
-	nmap <ScrollWheelRight> <nop>
-	nmap <S-ScrollWheelRight> <nop>
-	nmap <C-ScrollWheelRight> <nop>
-
-" Javascript 
-" ==========
-	let g:javascript_conceal_function = "ƒ"
-	let g:javascript_conceal_arrow_function = "⇒"
-	let g:javascript_conceal_null = "Π"
-	let g:javascript_conceal_this = "@"
-	let g:syntastic_javascript_checkers = ['eslint']
-	let g:jsx_ext_required = 0
-	let g:ale_fixers = {
-	 \ 'javascript': ['eslint']
-	 \ }
-	let g:ale_sign_error = '❌'
-	let g:ale_sign_warning = '⚠️'
-	let g:ale_fix_on_save = 1
-
-" Misc
-" ====
-	set cmdheight=1
-	set mouse=
-	set shortmess=aT
-
-" Arrow Keys
-" ==========
-	nnoremap <Left> h
-	nnoremap <Right> l
-	nnoremap <Up> k
-	nnoremap <Down> j
-	
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
