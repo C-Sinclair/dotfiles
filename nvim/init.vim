@@ -1,3 +1,7 @@
+if exists('g:vscode')
+    source $HOME/.config/nvim/vscode/settings.vim
+endif
+
 let mapleader =";"
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
@@ -58,6 +62,11 @@ call plug#end()
 
 " Settings for COC
     set hidden
+    set nobackup
+    set nowritebackup
+    set updatetime=300
+    set signcolumn=yes
+
     set cmdheight=2
     set shortmess+=c
 
@@ -68,6 +77,34 @@ call plug#end()
 
     let g:go_def_mapping_enabled = 0
 
+    " Used in the tab autocompletion for coc
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+
+    " Use <c-space> to trigger completion.
+    inoremap <silent><expr> <c-space> coc#refresh()
+
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+    " Use `[g` and `]g` to navigate diagnostics
+    nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+    " Remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+
+    " Notify coc.nvim that <enter> has been pressed.
+    " Currently used for the formatOnType feature.
+    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Tabs
 	set tabstop=4
 	set shiftwidth=4
@@ -75,6 +112,7 @@ call plug#end()
 
 " Buffers
     nmap <Leader><Tab> :bn<cr>      " Switch buffers
+    nmap <c-q> :bd<cr>              " Quit buffer
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -88,6 +126,7 @@ call plug#end()
 " Nerd tree
 	map <leader>a :NERDTreeToggle<CR>
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    let NERDTreeShowHidden=1
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -155,3 +194,13 @@ endif
 
 " Rebuild DWMblocks on config file change
 autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
+
+" Scala
+" Help Vim recognize *.sbt and *.sc as Scala files
+au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
