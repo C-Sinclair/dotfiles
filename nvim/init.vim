@@ -12,32 +12,52 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+" Tags/Brackets
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
+Plug 'alvan/vim-closetag'
+" Filetree
 Plug 'preservim/nerdtree'
+" Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" Focus
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+" Git
 Plug 'jreybert/vimagit'
-Plug 'ayu-theme/ayu-vim'
-Plug 'axvr/photon.vim'
+" Powerbar
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Comments
 Plug 'tpope/vim-commentary'
+" Language specific
 Plug 'ap/vim-css-color'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'fatih/vim-go'
-Plug 'jiangmiao/auto-pairs'
+" Close buffers
+Plug 'moll/vim-bbye'
+" Autocomplete
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
+Plug 'neoclide/coc-pairs'
+" Theme
+Plug 'artanikin/vim-synthwave84'
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'axvr/photon.vim'
+
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+
 call plug#end()
 
 " Appearance
     set termguicolors     " enable true colors support
     " colorscheme photon
     " set bg=light        " old theme
-    let ayucolor = 'mirage'
-    colorscheme ayu
+    " let ayucolor = 'mirage'
+    " colorscheme ayu
+    colorscheme synthwave84
 
 " Airline
     let g:airline_powerline_fonts = 1
@@ -86,10 +106,6 @@ call plug#end()
     " Use <c-space> to trigger completion.
     inoremap <silent><expr> <c-space> coc#refresh()
 
-    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-    " Coc only does snippet and additional edit on confirm.
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
     " Use `[g` and `]g` to navigate diagnostics
     nmap <silent> [g <Plug>(coc-diagnostic-prev)
     nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -100,11 +116,6 @@ call plug#end()
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
 
-    " Notify coc.nvim that <enter> has been pressed.
-    " Currently used for the formatOnType feature.
-    inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-          \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " Tabs
 	set tabstop=4
 	set shiftwidth=4
@@ -112,7 +123,7 @@ call plug#end()
 
 " Buffers
     nmap <Leader><Tab> :bn<cr>      " Switch buffers
-    nmap <c-q> :bd<cr>              " Quit buffer
+    nmap \q :Bdelete<cr>              " Close buffer
 
 " Enable autocompletion:
 	set wildmode=longest,list,full
@@ -122,6 +133,15 @@ call plug#end()
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
+
+" Autocomplete with Coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:coc_global_extensions = [
+    \ 'coc-pairs',
+    \ 'coc-tsserver',
+    \ 'coc-css',
+    \ 'coc-prettier'
+  \ ]
 
 " Nerd tree
 	map <leader>a :NERDTreeToggle<CR>
@@ -198,9 +218,9 @@ autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/
 " Scala
 " Help Vim recognize *.sbt and *.sc as Scala files
 au BufRead,BufNewFile *.sbt,*.sc set filetype=scala
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Terminal
+nnoremap <leader>t :terminal<cr>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-h> <C-h>
+tnoremap <C-l> <C-l>

@@ -58,3 +58,14 @@ source /home/conor/.config/broot/launcher/bash/br
 
 export NVIM_CONFIG=$HOME/.config/nvim/init.vim
 export ZSH_CONFIG=$HOME/.config/zsh/.zshrc
+alias zshrc="v $ZSH_CONFIG"
+alias nvimrc="v $NVIM_CONFIG"
+
+# Save the current dir into the .shell_local file for later access
+alias save_pwd='echo $PWD >> ~/.shell_local'
+# Runs before every shell execution
+preexec() {
+    save_pwd
+}
+# Return to a previous shell location
+alias cz='cd $(tail -1000 ~/.shell_local | sort - | uniq | fzf)'
