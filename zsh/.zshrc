@@ -1,11 +1,17 @@
 export ZSH=$HOME/.config/zsh/.oh-my-zsh
 
-ZSH_THEME="lambda-gitster"
-
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# Preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='nvim'
+ fi
+
+# Enable colors and change prompt:
 autoload -U colors && colors
 
 setopt autocd		# Automatically cd into typed directory.
@@ -35,37 +41,37 @@ bindkey '^e' edit-command-line
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 
-# NVM
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
-
-source /home/conor/.local/share/cargo/env
-
-setxkbmap -layout gb
-
 ZSH_THEME="lambda-gitster"
 
-export PATH=$PATH:$HOME/scripts:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
-export GOHOME=$GOPATH/src/github.com/c-sinclair
+export PATH=$PATH:$HOME/scripts:$HOME/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.yarn/bin:$HOME/Qt/Tools/QtCreator/bin
 
-# export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
-export ANDROID_SDK_ROOT=/opt/android-sdk
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+
+sudo /etc/init.d/dbus start &> /dev/null
+
+export MS=$HOME/projects/fortium/mediaseal-webui
+export VB=$HOME/projects/dst/videobrix
+export VBR=$HOME/projects/dst/videobrix-receiverbox
+export VBRF=$HOME/projects/dst/videobrix-receiverbox-frontend
+
+export winsrc=/mnt/c/src
+export win=/mnt/c/Users/conor.sinclair
+export desktop=$win/Desktop
+
+alias v=nvim
+alias code=code-insiders
+alias flutter="cmd.exe $winsrc/flutter/bin/flutter "
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/conor/.sdkman"
+[[ -s "/home/conor/.sdkman/bin/sdkman-init.sh" ]] && source "/home/conor/.sdkman/bin/sdkman-init.sh"
+export DOWNLOADS=/mnt/c/Users/conor.sinclair/Downloads
+
+export ANDROID_HOME=~/Android
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+export PATH=$PATH:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$winsrc/flutter/bin
+export BROWSER=/mnt/c/Program\ Files\ \(x86\)/BraveSoftware/Brave-Browser/Application/brave.exe
 
 source /home/conor/.config/broot/launcher/bash/br
-
-export NVIM_CONFIG=$HOME/.config/nvim/init.vim
-export ZSH_CONFIG=$HOME/.config/zsh/.zshrc
-alias zshrc="v $ZSH_CONFIG"
-alias nvimrc="v $NVIM_CONFIG"
-
-# Save the current dir into the .shell_local file for later access
-alias save_pwd='echo $PWD >> ~/.shell_local'
-# Runs before every shell execution
-preexec() {
-    save_pwd
-}
-# Return to a previous shell location
-alias cz='cd $(tail -1000 ~/.shell_local | sort - | uniq | fzf)'
