@@ -31,6 +31,8 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Comments
 Plug 'tpope/vim-commentary'
+" Testing
+Plug 'vim-test/vim-test'
 " Language specific
 Plug 'ap/vim-css-color'
 Plug 'leafgarland/typescript-vim'
@@ -123,6 +125,7 @@ call plug#end()
 
 " Buffers
     nmap <Leader><Tab> :bn<cr>      " Switch buffers
+    nmap <Leader><S-Tab> :bN<cr>      " Switch buffers
     nmap \q :Bdelete<cr>              " Close buffer
 
 " Enable autocompletion:
@@ -224,3 +227,8 @@ nnoremap <leader>t :terminal<cr>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-h> <C-h>
 tnoremap <C-l> <C-l>
+
+" Testing
+nnoremap <C-t>n :TestNearest<cr>
+nnoremap <C-t>l :TestLast<cr>
+nnoremap <C-t>f :TestFile<cr>

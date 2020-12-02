@@ -47,7 +47,7 @@ setxkbmap -layout gb
 
 ZSH_THEME="lambda-gitster"
 
-export PATH=$PATH:$HOME/scripts:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/scripts:$HOME/scripts/shell:$HOME/scripts/js:$HOME/bin:/usr/local/go/bin:$GOPATH/bin
 export GOHOME=$GOPATH/src/github.com/c-sinclair
 
 # export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
