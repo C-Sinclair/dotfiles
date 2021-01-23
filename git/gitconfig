@@ -1,7 +1,0 @@
-[user]
-	name = Conor Sinclair
-	email = conor@sinclair.software
-[core]
-	editor = vim
-[init]
-	defaultBranch = development
