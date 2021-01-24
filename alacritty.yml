@@ -1,0 +1,6 @@
+window:
+    padding:
+        x: 20
+        y: 10
+    decorations: "none"
+    live_config_reload: true
